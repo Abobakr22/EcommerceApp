@@ -1,0 +1,17 @@
+<div class="mb-3">
+    <label for="" class="form-label">category</label>
+    <select class="form-select form-select-lg"  [(ngModel)]="selectedCategoryId">
+        <option selected value="0">All</option>
+        <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+    </select>
+</div> 
+
+<div class="bg-warning my-5" style="border: 2px solid black;">
+    <app-products [receivedCategoryId] = "selectedCategoryId" (onTotalPriceChanged)= "calculateTotalPrice($event)"></app-products>
+</div>
+
+<div style="border: 2px solid black; margin-top: 15px; background-color: darkgray;">
+    <h1 style="margin:10px;">received total order price : {{receivedTotalPrice}}</h1>
+</div>
+
+<input type="text" #UserNameInput>

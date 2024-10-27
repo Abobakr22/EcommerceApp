@@ -1,0 +1,36 @@
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="col">
+        <div class="card">
+            <img [src]="product?.imgUrl" class="card-img-top" alt="...">
+            <div class="card-body" appMyCustomDirective="lightblue" extgernalColor="pink"> <!-- custom directive -->
+                <!--passed color as input there -->
+                <h5 class="card-title">{{product?.name}}</h5>
+                <p class="card-text">price : {{product?.price | currency }}</p>
+                <!-- using currency pipe -->
+                @switch (product?.quantity) {
+                @case (0) {
+                <p>quantity : Out of Stock </p>
+                }
+                @case (1) {
+                <p>quantity : last Item </p>
+                }
+                @case (2) {
+                <p>quantity : last Two Items </p>
+                }
+                @default {
+                <p>quantity : {{product?.quantity}} </p>
+                }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-danger" (click)="GoBack()" style="margin-top: 5px; margin-right: 5px;"> Back </button>
+
+<div>
+
+    <button class="btn btn-warning" [disabled]="currentId == ArrayOfIds[0]" (click)="GoPrevious()" style="margin-top: 5px; margin-right: 5px;"> Previous </button>
+    <button class="btn btn-success" [disabled]="currentId == ArrayOfIds[ArrayOfIds.length-1]" (click)="GoNext()" style="margin-top: 5px; margin-right: 5px;"> Next </button>
+
+</div>

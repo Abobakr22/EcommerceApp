@@ -1,0 +1,4 @@
+
+
+<button class="btn btn-primary" style="margin-left: 5px; margin-right: 5px;" [disabled]="isUserLoggoed" (click)="login()" > login </button>
+<button class="btn btn-danger" style="margin-left: 5px; margin-right: 5px;"  [disabled]="!isUserLoggoed"(click)="logout()"> logout </button>
