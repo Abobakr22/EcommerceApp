@@ -4,6 +4,7 @@ import { StaticProductsService } from '../../services/static-products.service';
 import { Iproduct } from '../../models/iproduct';
 import { CurrencyPipe, Location } from '@angular/common';
 import { MyCustomDirectiveDirective } from '../../directives/my-custom-directive.directive';
+import { ApiProductsService } from '../../services/api-products.service';
 
 @Component({
   selector: 'app-details',
@@ -18,19 +19,29 @@ export class DetailsComponent implements OnInit {
   product: Iproduct | null = null
 
   ArrayOfIds: number[]
-  CurrentIdIndex : number = 0
+  CurrentIdIndex: number = 0
 
   constructor(private _activatedRoute: ActivatedRoute,
     private _staticProducts: StaticProductsService,
     private _location: Location,
-    private _router: Router) {
+    private _router: Router,
+    private _apiProducts: ApiProductsService) {
 
     this.ArrayOfIds = this._staticProducts.mapProductsToIds();
+
   }
+
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((paramMap) => {
       this.currentId = Number(paramMap.get('id'))
-      this.product = this._staticProducts.getProductById(this.currentId);
+      this._apiProducts.getProductById(this.currentId).subscribe({
+        next: (res) => {
+          this.product = res
+        },
+        error: (err) => {
+          console.log(err)
+        }
+      })
     });
   }
 
@@ -40,8 +51,8 @@ export class DetailsComponent implements OnInit {
 
   GoNext() {
     this.CurrentIdIndex = this.ArrayOfIds.findIndex((id) => id == this.currentId);
-    if (this.CurrentIdIndex != this.ArrayOfIds.length-1) {
-    this._router.navigateByUrl(`/Details/${this.ArrayOfIds[this.CurrentIdIndex + 1]}`);
+    if (this.CurrentIdIndex != this.ArrayOfIds.length - 1) {
+      this._router.navigateByUrl(`/Details/${this.ArrayOfIds[this.CurrentIdIndex + 1]}`);
     }
   }
 

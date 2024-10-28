@@ -1,3 +1,4 @@
+import { authGuard } from './guards/auth.guard';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
@@ -11,7 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 export const routes: Routes = [
   { path: '' , redirectTo : 'home' , pathMatch:'full'},
   { path: 'home', component: HomeComponent },
-  { path: 'products', component: ProductsComponent },
+  { path: 'products', component: ProductsComponent , canActivate: [authGuard] }, //adding created guard called auth on this comp
   { path: 'Login', component: LoginComponent },
   {
     path: 'About',component: AboutUsComponent,

@@ -25,7 +25,7 @@
                 <!-- <button class="btn btn-success" routerLink="/Details"> Details </button> -->
                  <!-- binding of routerlink because of dynamic variable id -->
                 <button class="btn btn-success" [routerLink]="['/Details' , prod.id]"> Details </button>
-                
+
                 <!-- <button class="btn btn-success" (click)="navigateToDetails()"> Details </button> -->
                 <!-- <button class="btn btn-success" (click)="navigateToDetails(prod.id)"> Details </button> -->
             </div>
@@ -43,7 +43,7 @@
 
 
 <!-- <h1>total order price : {{totalOrderPrice}}</h1>
- <h2>selected Category Id : {{selectedCategoryId}}</h2> 
+ <h2>selected Category Id : {{selectedCategoryId}}</h2>
 
 
 <div class="mb-3">
@@ -57,7 +57,7 @@
     @for ( prod of products; track prod.id ; let i = $index) {
      <ng-container *ngFor="let prod of products; let i=index ; let c = count ; trackBy:trackItem"> -->
 <!-- <div class="col" *ngFor="let prod of products" [class.d-none]="prod.catId != selectedCategoryId"> to filter selected items  -->
-<!-- <div class="col" [class.d-none]="prod.catId != selectedCategoryId" *ngIf="prod.quantity != 0"> 
+<!-- <div class="col" [class.d-none]="prod.catId != selectedCategoryId" *ngIf="prod.quantity != 0">
     <div class="col">
         <div class="card" [ngStyle]="{border : (prod.quantity == 1)? '1px solid red' : '1px solid'}">
             <img [src]="prod.imgUrl" class="card-img-top" alt="...">
@@ -68,7 +68,7 @@
                 <p class="card-text" *ngIf="prod.quantity != 1 ; else lastItem">quantity : {{prod.quantity}}</p>
                         <ng-template #lastItem>
                             <p>quantity : last Item</p>
-                        </ng-template> 
+                        </ng-template>
                 @switch (prod.quantity) {
                 @case (1) {
                 <p>quantity : last Item </p>
@@ -84,12 +84,12 @@
                             <p *ngSwitchCase="1">quantity : last Item </p>
                             <p *ngSwitchCase="2">quantity : last 2 Items </p>
                             <p *ngSwitchDefault="">quantity : {{prod.quantity}} </p>
-                        </div> 
+                        </div>
                 <input type="number" #count style="margin-right: 5px;" />
                 <button class="btn btn-success" (click)="calculateTotalPrice(count.value , prod.price)">Buy</button>
             </div>
         </div>
     </div>
-     </ng-container> 
+     </ng-container>
     }
 </div> -->
