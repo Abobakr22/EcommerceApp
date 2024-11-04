@@ -24,4 +24,8 @@ export class ApiProductsService {
     return this._httpClient.get<Iproduct[]>(`${environment.baseUrl}/products?catId=${catId}`)
   }
 
+  addProduct(newProduct : Iproduct): Observable<Iproduct>{
+    return this._httpClient.post<Iproduct>(`${environment.baseUrl}/products` , JSON.stringify(newProduct));
+  }
+
 }

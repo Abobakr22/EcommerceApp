@@ -55,20 +55,27 @@
       "quantity": 5,
       "imgUrl": "https://fakeimg.pl/300/",
       "catId": 3
+    },
+    {
+      "id": "a693",
+      "name": "iphone 15",
+      "price": 64000,
+      "quantity": 4,
+      "imgUrl": "C:\\fakepath\\noimage.jpg",
+      "catId": "2"
     }
   ],
-
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Laptop"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Phone"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Tablet"
     }
   ]

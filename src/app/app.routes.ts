@@ -8,12 +8,16 @@ import { VisionComponent } from './components/vision/vision.component';
 import { ValuesComponent } from './components/values/values.component';
 import { DetailsComponent } from './components/details/details.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
   { path: '' , redirectTo : 'home' , pathMatch:'full'},
   { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductsComponent , canActivate: [authGuard] }, //adding created guard called auth on this comp
   { path: 'Login', component: LoginComponent },
+  { path: 'Register', component: RegisterComponent},
+  { path: 'AddProduct', component: AddProductComponent },
   {
     path: 'About',component: AboutUsComponent,
     children: [
@@ -27,3 +31,13 @@ export const routes: Routes = [
   {path: 'Details/:id' , component: DetailsComponent},
   { path: '**', component: NotFoundComponent },
 ];
+
+
+
+//how to apply lazy loading for a component
+// { path: 'products',
+//   loadComponent:()=>
+//    import('./components/products/products.component')
+//   .then((obj)=> obj.ProductsComponent) ,
+//   canActivate: [authGuard]
+//  },

@@ -17,10 +17,16 @@
           <a class="nav-link " aria-current="page" routerLink="/About"    routerLinkActive="active bg-success">About</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="/AddProduct" routerLinkActive="active bg-success">Add Product</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link " aria-current="page" routerLink="/Login"    routerLinkActive="active bg-success">
             <span *ngIf="!isUserLoggoed">Login</span>
             <span *ngIf="isUserLoggoed">Logout</span>
           </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="/Register" routerLinkActive="active bg-success">Register</a>
         </li>
         <!--  <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
