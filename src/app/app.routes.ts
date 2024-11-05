@@ -12,8 +12,8 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
-  { path: '' , redirectTo : 'home' , pathMatch:'full'},
-  { path: 'home', component: HomeComponent },
+  { path: '' , redirectTo : 'Home' , pathMatch:'full'},
+  { path: 'Home', component: HomeComponent },
   { path: 'products', component: ProductsComponent , canActivate: [authGuard] }, //adding created guard called auth on this comp
   { path: 'Login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent},

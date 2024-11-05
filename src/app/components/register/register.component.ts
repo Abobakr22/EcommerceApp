@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -13,17 +13,29 @@ export class RegisterComponent {
 
   userRegisterForm:FormGroup
 
-  constructor() {
-    this.userRegisterForm = new FormGroup({
-      name: new FormControl('' , [Validators.required , Validators.pattern('^[a-z-A-Z]{3,10}$')]),
-      email: new FormControl(''),
-      password: new FormControl(''),
-      address: new FormGroup({
-        city: new FormControl(''),
-        street: new FormControl('')
+  constructor(private FB : FormBuilder) {
+    this.userRegisterForm = FB.group({
+      name: ['' , [Validators.required , Validators.pattern('^[a-z-A-Z]{3,10}$')]],
+      email: [''],
+      password: [''],
+      address: FB.group({
+        city: [''],
+        street: ['']
       }),
-      phoneNumbers: new FormArray([new FormControl('')]),
+      phoneNumbers: FB.array([['']]),
     })
+
+    //reactive form without formBuilder service
+    // this.userRegisterForm = new FormGroup({
+    //   name: new FormControl('' , [Validators.required , Validators.pattern('^[a-z-A-Z]{3,10}$')]),
+    //   email: new FormControl(''),
+    //   password: new FormControl(''),
+    //   address: new FormGroup({
+    //     city: new FormControl(''),
+    //     street: new FormControl('')
+    //   }),
+    //   phoneNumbers: new FormArray([new FormControl('')]),
+    // })
   }
 
   Register(){
