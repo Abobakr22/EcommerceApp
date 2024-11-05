@@ -8,6 +8,7 @@ import { increaseCounter } from './store/counter/counter.action';
 import { counterReducer } from './store/counter/counter.reducer';
 import { languageReducer } from './store/Language/language.reducer';
 import { provideEffects } from '@ngrx/effects';
+import { LanguageEffect } from './store/Language/language.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
@@ -17,7 +18,7 @@ export const appConfig: ApplicationConfig = {
         counter: counterReducer,
         language: languageReducer
     }),
-     provideEffects()]
+     provideEffects([LanguageEffect])]
 };
 
 
